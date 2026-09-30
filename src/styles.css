@@ -1,0 +1,2568 @@
+:root {
+  font-family: "Manrope", sans-serif;
+  color: #eee7d5;
+  background: #141711;
+  font-synthesis: none;
+  font-weight: 400;
+  --gold: #c5a46a;
+  --gold-bright: #e1c38c;
+  --cream: #eee7d5;
+  --ink: #39301f;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --display: "Cinzel", Georgia, serif;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #e2c588;
+  outline-offset: 7px;
+}
+h1:focus {
+  outline: none;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+svg {
+  flex-shrink: 0;
+}
+button {
+  border: 0;
+}
+h1,
+h2,
+p {
+  margin: 0;
+}
+button:active {
+  filter: brightness(1.12);
+}
+::selection {
+  background: #b79656;
+  color: #171d15;
+}
+.experience {
+  position: relative;
+  min-height: 780px;
+  height: 100svh;
+  isolation: isolate;
+  overflow: hidden;
+  background: #151b16;
+}
+.world-background,
+.scene-image,
+.scene-shading,
+.light-breath,
+.floor-mist,
+.film-grain,
+.screen-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.world-background {
+  z-index: -3;
+  overflow: hidden;
+}
+.scene-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition:
+    opacity 1.4s,
+    transform 3s;
+  animation: worldAwakes 3s ease-out;
+}
+.scene-image.hidden-scene {
+  opacity: 0;
+}
+.scene-shading {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(13, 21, 16, 0.67),
+      rgba(17, 23, 17, 0.26) 48%,
+      rgba(14, 19, 14, 0.02) 80%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(12, 18, 13, 0.92),
+      transparent 24%,
+      transparent 76%,
+      rgba(14, 19, 15, 0.55)
+    );
+  transition: background 2s;
+}
+.light-breath {
+  background: radial-gradient(ellipse at 80% 55%, #d79b3213, transparent 45%);
+  animation: breathe 7s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+.floor-mist {
+  inset: 65% -10% -15%;
+  background: radial-gradient(
+    ellipse,
+    rgba(178, 192, 164, 0.08),
+    transparent 63%
+  );
+  filter: blur(25px);
+  animation: mistDrift 23s ease-in-out infinite alternate;
+}
+.film-grain {
+  z-index: 9;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+.screen-border {
+  z-index: 10;
+  inset: 20px;
+  border: 1px solid #cbb47816;
+}
+.screen-border span {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #b69c665e;
+  border-style: solid;
+}
+.screen-border span:nth-child(1) {
+  left: -1px;
+  top: -1px;
+  border-width: 1px 0 0 1px;
+}
+.screen-border span:nth-child(2) {
+  right: -1px;
+  top: -1px;
+  border-width: 1px 1px 0 0;
+}
+.screen-border span:nth-child(3) {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1px 1px 0;
+}
+.screen-border span:nth-child(4) {
+  left: -1px;
+  bottom: -1px;
+  border-width: 0 0 1px 1px;
+}
+.particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+.world-header {
+  position: absolute;
+  left: 4.5%;
+  right: 4.5%;
+  top: 47px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.wordmark {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+.wordmark > svg {
+  width: 40px;
+  height: 40px;
+  color: var(--gold);
+}
+.wordmark > span {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.1px;
+  line-height: 1.9;
+}
+.wordmark > span > span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 4.9px;
+  color: var(--gold);
+}
+.dedication {
+  font-size: 8px;
+  letter-spacing: 2.6px;
+  color: #c6bd9d;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.dedication > span {
+  height: 1px;
+  width: 20px;
+  background: #bca77f6b;
+}
+.sound-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 10px 12px;
+  background: none;
+  font-size: 9px;
+  letter-spacing: 0.4px;
+  color: #d2c9b2;
+  transition: color 0.3s;
+}
+.sound-button:hover {
+  color: #fff1c9;
+}
+.sound-button > svg {
+  color: var(--gold);
+}
+.sound-light {
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background: #8c9078;
+  margin-left: 6px;
+}
+.sound-light.on {
+  background: #d7b573;
+  box-shadow: 0 0 9px #ddb164;
+}
+.eyebrow {
+  font-family: "Manrope", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2.8px;
+  line-height: 1.8;
+  color: var(--gold);
+  display: block;
+}
+.intro-scene {
+  height: 100%;
+  position: relative;
+}
+.intro-copy {
+  position: absolute;
+  top: 23%;
+  left: 10.1%;
+  animation: enterCopy 1.8s 0.2s both;
+}
+.intro-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 8px;
+  letter-spacing: 2.3px;
+  margin-bottom: 23px;
+}
+.intro-eyebrow > span {
+  height: 1px;
+  width: 28px;
+  background: var(--gold);
+}
+.intro-copy h1 {
+  font-family: var(--display);
+  font-size: clamp(60px, 6.05vw, 94px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  line-height: 1.15;
+  text-shadow: 0 4px 32px #10171130;
+}
+.title-last {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.11em;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -2.4px;
+}
+.title-last em {
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+.title-spark {
+  position: relative;
+  display: inline-block;
+  font-size: 25px;
+  color: var(--gold);
+  vertical-align: top;
+  margin: 15px 0 0 23px;
+  animation: breathe 4s infinite alternate;
+}
+.tiny-ornament {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--gold);
+  font-size: 15px;
+  margin: 21px 0 18px;
+  width: 143px;
+}
+.tiny-ornament span {
+  height: 1px;
+  background: linear-gradient(90deg, #9a86566e, transparent);
+  flex: 1;
+}
+.tiny-ornament span:first-child {
+  background: linear-gradient(90deg, transparent, #9a86566e);
+}
+.intro-description {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.6;
+  color: #d4d0bc;
+  letter-spacing: 0.2px;
+}
+.intro-description em {
+  font-style: normal;
+  color: #e6d8b9;
+}
+.gold-button {
+  position: relative;
+  background: linear-gradient(105deg, #d5b982, #c1a065);
+  border: 1px solid #e6cf9f8a;
+  box-shadow:
+    0 3px 25px #ba924520,
+    inset 0 0 0 4px #86683b18;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 19px 24px;
+  color: #272b20;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 31px;
+  min-width: 264px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  overflow: hidden;
+}
+.gold-button:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    #fff9df5c 50%,
+    transparent 70%
+  );
+  transform: translateX(-110%);
+  transition: transform 0.8s;
+}
+.gold-button:hover:after {
+  transform: translateX(110%);
+}
+.gold-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 35px #bd9f5038;
+}
+.gold-button > svg:last-child {
+  margin-left: auto;
+}
+.headphone-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa996;
+  font-size: 9px;
+  margin-top: 18px;
+  letter-spacing: 0.2px;
+}
+.headphone-note > svg {
+  color: #b7a47c;
+}
+.portal-whisper {
+  position: absolute;
+  left: 77%;
+  top: 57%;
+  text-align: center;
+  pointer-events: none;
+  animation: enterCopy 2s 1s both;
+}
+.whisper-star {
+  color: #f3d492;
+  font-size: 42px;
+  text-shadow: 0 0 24px #fbd28b;
+  animation: starFloat 7s ease-in-out infinite;
+}
+.portal-whisper > span {
+  display: block;
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+  color: #eadbbc;
+  margin-top: 5px;
+  text-shadow: 0 2px 10px #292615;
+}
+.portal-whisper em {
+  font-weight: 400;
+}
+.whisper-line {
+  height: 49px;
+  width: 1px;
+  background: linear-gradient(#d4b37480, transparent);
+  margin: 17px auto;
+}
+.intro-side-note {
+  position: absolute;
+  right: 43px;
+  top: 47%;
+  writing-mode: vertical-rl;
+  font-size: 7px;
+  letter-spacing: 2.8px;
+  color: #c6b79495;
+}
+.world-footer {
+  position: absolute;
+  z-index: 12;
+  bottom: 44px;
+  left: 4.7%;
+  right: 4.7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #b8b69f;
+}
+.chapter-marker {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.chapter-number {
+  font-family: var(--display);
+  font-size: 11px;
+  color: var(--gold);
+}
+.chapter-line {
+  height: 1px;
+  width: 28px;
+  background: #b29b6966;
+}
+.journey-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.journey-track > span {
+  height: 5px;
+  width: 5px;
+  border: 1px solid #998562;
+  transform: rotate(45deg);
+}
+.journey-track > span.lit {
+  background: #c4a56d;
+  box-shadow: 0 0 7px #c8a96a40;
+}
+.journey-track > i {
+  height: 1px;
+  width: 22px;
+  background: #8d806b40;
+}
+.explore-help {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  color: #beb7a3;
+  background: none;
+  padding: 12px 0 12px 12px;
+}
+.explore-help:hover {
+  color: #efdeb7;
+}
+.explore-help > svg {
+  color: var(--gold);
+}
+/* The wand and its physical passage. */
+.wand-scene {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+.wand-copy {
+  position: absolute;
+  left: 10.1%;
+  top: 34%;
+  max-width: 500px;
+  animation: enterCopy 1.4s both;
+}
+.wand-copy h1 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.8vw, 72px);
+  font-weight: 400;
+  line-height: 1.08;
+  margin: 20px 0;
+}
+.wand-copy em {
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+.wand-copy p {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.6;
+  color: #c9c6af;
+}
+.touch-instruction {
+  display: block;
+  margin-top: 24px;
+  color: #aead94;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.magic-portal {
+  position: absolute;
+  left: 68%;
+  top: 28%;
+  width: 25%;
+  height: 49%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--gold-bright);
+  outline-offset: 12px;
+  touch-action: manipulation;
+}
+.magic-portal > svg {
+  width: 55px;
+  height: 55px;
+  filter: drop-shadow(0 0 18px #e7c68b);
+  animation: starFloat 5s infinite ease-in-out;
+}
+.portal-halo {
+  position: absolute;
+  inset: 8% -8%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #e8ba7838, transparent 67%);
+  opacity: calc(0.4 + var(--charge));
+  transform: scale(calc(0.8 + var(--charge) * 0.4));
+  transition:
+    transform 0.1s,
+    opacity 0.1s;
+}
+.portal-ring {
+  position: absolute;
+  inset: 6% 10%;
+  border: 1px solid #d4b07470;
+  border-radius: 50% 50% 45% 45%;
+  box-shadow:
+    0 0 24px #e7c58d26,
+    inset 0 0 25px #e7c58d17;
+  animation: portalPulse 5s ease-in-out infinite;
+}
+.portal-ring.ring-two {
+  inset: 1% 4%;
+  border-color: #d4b07426;
+  animation-delay: -2s;
+}
+.portal-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  z-index: 1;
+  margin-top: 19px;
+  text-shadow: 0 1px 10px #171a13;
+}
+.magic-portal:hover .portal-ring,
+.magic-portal:focus-visible .portal-ring {
+  border-color: #f4d692;
+  box-shadow: 0 0 60px #e6c98a5c;
+}
+.wand-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 18;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: 0 0;
+}
+.wand-cursor > span {
+  display: block;
+  height: 116px;
+  width: 5px;
+  border-radius: 1px 1px 50% 50%;
+  background: linear-gradient(#e4bd6b, #695332 12%, #3a2e20 70%, #86714c);
+  box-shadow: 2px 0 3px #14120e;
+  transform: translateY(2px);
+}
+.wand-cursor > i {
+  position: absolute;
+  left: -3px;
+  top: -4px;
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  background: #fff1c2;
+  box-shadow:
+    0 0 13px #f9d695,
+    0 0 34px #f9d695;
+}
+.portal-expansion {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: radial-gradient(
+    ellipse at 80% 48%,
+    #fff2c9 0%,
+    #c7a36d 22%,
+    #e5d6b2 55%,
+    #182017 90%
+  );
+  animation: portalExpansion 2.3s cubic-bezier(0.65, 0, 0.25, 1) both;
+  pointer-events: none;
+}
+/* The ceremony is an original full-screen animated sequence. */
+.state-ceremony .school-image {
+  transform: scale(1.5);
+  transform-origin: 80% 50%;
+  filter: brightness(0.55);
+}
+.state-ceremony .scene-shading {
+  background: radial-gradient(ellipse at center, #40352008, #11180fd9);
+}
+.state-ceremony .world-header,
+.state-ceremony .world-footer {
+  opacity: 0.35;
+  transition: opacity 1s;
+}
+.ceremony {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.ceremony-light {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 160deg at 50% -20%,
+    transparent,
+    #dfc5811f 12deg,
+    transparent 20deg,
+    transparent 35deg,
+    #dfc58117 43deg,
+    transparent 55deg
+  );
+  animation: lightSway 13s ease-in-out infinite alternate;
+}
+.ceremony-copy {
+  position: absolute;
+  top: 32%;
+  left: 5%;
+  right: 5%;
+  text-align: center;
+}
+.ceremony-copy > svg {
+  color: var(--gold-bright);
+  margin-bottom: 26px;
+}
+.ceremony-lines {
+  position: relative;
+  height: 230px;
+  margin-top: 38px;
+}
+.ceremony-line {
+  position: absolute;
+  inset: 0;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.7vw, 58px);
+  line-height: 1.4;
+  opacity: 0;
+  animation: ceremonyVerse 5.6s both;
+}
+.ceremony-line em {
+  color: #ddc28a;
+}
+.ceremony-line.act-two {
+  animation-delay: 5.6s;
+}
+.ceremony-line.act-three {
+  animation-delay: 11.2s;
+}
+.floating-candles > span {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 7px;
+  height: 48px;
+  background: linear-gradient(90deg, #9a8154, #e8d4a3, #89744c);
+  box-shadow: 0 0 25px #e9b56719;
+  transform: scale(var(--scale));
+  animation: candleFloat 6s var(--delay) ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+.floating-candles > span:before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 13px;
+  left: 0.5px;
+  top: -14px;
+  border-radius: 80% 20% 45% 45%;
+  background: #ffe7ad;
+  box-shadow: 0 0 14px 5px #ffc2656b;
+  animation: candleFlicker 1.8s var(--delay) infinite alternate;
+}
+/* The shield materializes, then a letter unrolls. */
+.state-revelation .scene-shading {
+  background: #11180ee6;
+}
+.revelation-scene {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6vw;
+  padding: 100px 10% 85px;
+}
+.revelation-aura {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at 45% 45%, #ba88312b, transparent 60%);
+  animation: breathe 6s infinite alternate;
+}
+.shield-column {
+  text-align: center;
+  flex-shrink: 0;
+  width: 350px;
+}
+.shield-column > .eyebrow {
+  font-size: 8px;
+  letter-spacing: 2.3px;
+}
+.house-shield {
+  width: 300px;
+  margin: 8px auto -2px;
+  filter: drop-shadow(0 7px 15px #05080490) drop-shadow(0 0 25px #b28a3420);
+}
+.house-shield svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.shield-sheen {
+  animation: shieldSheen 5s 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+.house-name {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 1.5s,
+    transform 1.5s;
+}
+.shield-complete .house-name {
+  opacity: 1;
+  transform: none;
+}
+.house-name > span {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+.house-name h1 {
+  font-family: var(--display);
+  font-size: 40px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin: 12px 0;
+}
+.house-name p {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: #c1b799;
+}
+.welcome-scroll {
+  position: relative;
+  background: radial-gradient(ellipse at 55% 35%, #f0dfb5, #d3b67c);
+  color: var(--ink);
+  width: 370px;
+  padding: 45px 38px 40px;
+  box-shadow:
+    0 18px 60px #080d0aa6,
+    inset 0 0 40px #9368225c;
+  transform: rotate(-1.5deg);
+  animation: unroll 1.5s both;
+  clip-path: polygon(
+    0 1%,
+    12% 0,
+    36% 1%,
+    58% 0,
+    85% 1%,
+    100% 0,
+    99% 35%,
+    100% 75%,
+    99% 99%,
+    77% 100%,
+    50% 99%,
+    25% 100%,
+    0 99%,
+    1% 70%,
+    0 45%
+  );
+}
+.welcome-scroll:before,
+.parchment-sheet:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23795522' filter='url(%23p)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.welcome-scroll .eyebrow {
+  color: #82602e;
+  font-size: 7px;
+  letter-spacing: 2px;
+}
+.welcome-scroll h2 {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  margin: 15px 0 21px;
+}
+.welcome-scroll p {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.welcome-scroll .letter-signature {
+  font-style: italic;
+  font-size: 19px;
+  margin-top: 22px;
+}
+.ink-button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: none;
+  border-bottom: 1px solid #71572c7d;
+  color: #493c25;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  padding: 14px 0 10px;
+  margin-top: 13px;
+  min-height: 44px;
+}
+.ink-button:hover {
+  color: #7d5420;
+  border-color: #65451d;
+}
+.letter-stamp {
+  font-family: var(--serif);
+  position: absolute;
+  right: 32px;
+  bottom: 27px;
+  font-style: italic;
+  border: 1px solid #98734473;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  font-size: 24px;
+  opacity: 0.65;
+}
+/* Architecture is navigation. */
+.room-heading {
+  position: absolute;
+  top: 17%;
+  left: 5%;
+  right: 5%;
+  text-align: center;
+  z-index: 2;
+  animation: enterCopy 1.2s both;
+}
+.room-heading h1 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.8vw, 56px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 12px 0;
+}
+.room-heading h1 em {
+  color: var(--gold-bright);
+}
+.room-heading p {
+  font-family: var(--serif);
+  color: #c2bea6;
+  font-size: 18px;
+}
+.school-scene {
+  height: 100%;
+  position: relative;
+}
+.state-school .scene-shading {
+  background: linear-gradient(
+    #11190eda,
+    rgba(15, 23, 15, 0.46) 35%,
+    #15190e91 70%,
+    #11180fec
+  );
+}
+.state-school .school-image {
+  transform: scale(1.1);
+  transform-origin: 75% 50%;
+}
+.school-passages {
+  position: absolute;
+  top: 38%;
+  bottom: 21%;
+  left: 12%;
+  right: 12%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 4%;
+}
+.passage {
+  width: 21%;
+  height: 90%;
+  padding: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.6s;
+}
+.passage-0 {
+  height: 110%;
+  order: 2;
+}
+.passage-1 {
+  height: 85%;
+  order: 1;
+}
+.passage-2 {
+  height: 92%;
+  order: 3;
+}
+.passage-3 {
+  height: 77%;
+  order: 4;
+}
+.passage-architecture {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 135px;
+  border: 9px solid #575548;
+  border-bottom: 2px solid #736853;
+  border-radius: 49% 49% 1px 1px;
+  box-shadow:
+    0 0 0 3px #2d3027,
+    0 0 0 6px #7e756344,
+    8px 10px 23px #080d0bab,
+    inset 0 0 20px #090d08;
+  background: repeating-linear-gradient(
+    90deg,
+    #262a21 0,
+    #303126 16%,
+    #1b211a 17%,
+    #39382b 18%
+  );
+  overflow: hidden;
+}
+.door-arch {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #a196774d;
+  border-radius: 48% 48% 0 0;
+}
+.door-knob {
+  position: absolute;
+  right: 18%;
+  top: 67%;
+  width: 8px;
+  height: 13px;
+  border: 2px solid #ad9360;
+  border-radius: 50%;
+  box-shadow: 1px 3px 4px #171710;
+}
+.door-light {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(ellipse at 50% 60%, #e7b7607a, transparent 70%);
+  transition: opacity 0.7s;
+}
+.door-emblem {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%);
+  color: #b19a64;
+  opacity: 0.65;
+}
+.passage-open .passage-architecture {
+  background:
+    linear-gradient(90deg, #3d342180, transparent 30%, #362d2080),
+    radial-gradient(ellipse at center, #bfa06066, #5b4e29a1 45%, #272c20);
+  border-color: #7a7056;
+}
+.passage-open .door-light {
+  opacity: 0.8;
+  animation: breathe 4s infinite alternate;
+}
+.passage-open .door-emblem {
+  color: #ffe5a9;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px #dbb16a);
+}
+.passage:hover {
+  transform: translateY(-6px);
+}
+.passage:hover .door-light {
+  opacity: 1;
+}
+.passage-locked:hover .door-emblem {
+  opacity: 1;
+}
+.door-title {
+  font-family: var(--display);
+  font-size: clamp(10px, 1.03vw, 15px);
+  letter-spacing: 0.4px;
+  color: #dcc89f;
+  margin-top: 18px;
+  white-space: nowrap;
+}
+.door-subtitle {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: #b3ae94;
+  margin-top: 8px;
+  white-space: nowrap;
+}
+.door-action {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  color: #b4a47f;
+  font-size: 8px;
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+.passage-open .door-action {
+  color: #ebcc8e;
+}
+.school-hint {
+  position: absolute;
+  bottom: 14%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  color: #c0b79b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.school-hint svg {
+  color: var(--gold);
+}
+.restart-button {
+  position: absolute;
+  right: 30px;
+  bottom: 98px;
+  background: none;
+  padding: 12px;
+  color: #b9ad86;
+  z-index: 12;
+}
+.world-footer-compact {
+  bottom: 36px;
+}
+/* Irregular physical portrait wall; the space pans on narrow screens. */
+.academy-scene {
+  height: 100%;
+  position: relative;
+}
+.state-academy .scene-shading {
+  background: linear-gradient(
+    180deg,
+    #171b12dc,
+    rgba(21, 24, 15, 0.58) 30%,
+    rgba(21, 24, 15, 0.22) 60%,
+    #151a10e8
+  );
+}
+.state-academy .scene-image {
+  object-position: center;
+}
+.academy-scene .room-heading {
+  top: 15%;
+}
+.academy-scene .room-heading h1 {
+  font-size: 45px;
+}
+.gallery-scroll {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 31%;
+  bottom: 21%;
+  overflow: visible;
+}
+.portrait-wall {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1240px;
+  margin: auto;
+}
+.portrait {
+  position: absolute;
+  background: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(var(--tilt, 0deg));
+  transition:
+    transform 0.5s,
+    filter 0.5s;
+  z-index: 1;
+}
+.portrait:hover,
+.portrait:focus-visible {
+  transform: rotate(0deg) translateY(-4px) scale(1.035);
+  z-index: 2;
+  filter: drop-shadow(0 0 15px #dfc47f4a);
+}
+.frame-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 9px;
+  background: linear-gradient(
+    120deg,
+    #d3ba7b,
+    #594b30 13%,
+    #a88a50 18%,
+    #50452f 24%,
+    #917443 77%,
+    #c1a366 86%,
+    #413b2a 95%
+  );
+  border: 2px solid #c7ad746b;
+  box-shadow:
+    0 0 0 3px #343325,
+    0 0 0 5px #93805488,
+    6px 13px 17px #100f0cbf,
+    inset 0 0 0 3px #463e2a;
+  transition: box-shadow 0.4s;
+}
+.frame-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #1f2319;
+  border: 2px solid #2e2d20;
+  box-shadow: 0 0 0 1px #bd9e6094;
+}
+.frame-chain {
+  position: absolute;
+  width: 64%;
+  height: 44px;
+  left: 18%;
+  top: -26px;
+  border: 1px solid #bcad8480;
+  clip-path: polygon(0 100%, 50% 0, 100% 100%, 96% 100%, 50% 6%, 4% 100%);
+  background: #ae9b6b6e;
+  z-index: -1;
+}
+.frame-chain:before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 2px);
+  top: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b7a575;
+}
+.frame-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #c5aa71;
+  z-index: 1;
+  pointer-events: none;
+}
+.frame-corner:after {
+  content: "✧";
+  font-size: 14px;
+  color: #d9bd79;
+  position: absolute;
+  top: -9px;
+  left: -6px;
+  text-shadow: 0 1px 2px #2b241b;
+}
+.top-left {
+  top: 1px;
+  left: 1px;
+  border-width: 2px 0 0 2px;
+}
+.top-right {
+  top: 1px;
+  right: 1px;
+  transform: rotate(90deg);
+  border-width: 2px 0 0 2px;
+}
+.bottom-left {
+  bottom: 1px;
+  left: 1px;
+  transform: rotate(-90deg);
+  border-width: 2px 0 0 2px;
+}
+.bottom-right {
+  bottom: 1px;
+  right: 1px;
+  transform: rotate(180deg);
+  border-width: 2px 0 0 2px;
+}
+.portrait-one {
+  left: 5%;
+  top: 6%;
+  width: 15%;
+  height: 79%;
+  --tilt: -2deg;
+}
+.portrait-two {
+  left: 25%;
+  top: 2%;
+  width: 12%;
+  height: 49%;
+  --tilt: 1deg;
+}
+.portrait-three {
+  left: 43%;
+  top: 21%;
+  width: 25%;
+  height: 62%;
+  --tilt: 1.4deg;
+}
+.portrait-four {
+  left: 27%;
+  top: 67%;
+  width: 10%;
+  height: 25%;
+  --tilt: -3deg;
+}
+.portrait-five {
+  left: 76%;
+  top: 0;
+  width: 14%;
+  height: 64%;
+  --tilt: -1.7deg;
+}
+.portrait-six {
+  left: 76%;
+  top: 74%;
+  width: 12%;
+  height: 20%;
+  --tilt: 1.5deg;
+}
+.portrait-plaque {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(120deg, #6d5b38, #af9359, #685536);
+  border: 1px solid #bca5764a;
+  box-shadow: 2px 3px 6px #13150fc7;
+  color: #171d15;
+  font-family: var(--serif);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  padding: 4px 10px;
+  white-space: nowrap;
+  margin-top: 13px;
+  position: absolute;
+  top: 100%;
+}
+.portrait-plaque svg {
+  opacity: 0.7;
+}
+.memory-read {
+  position: absolute;
+  top: calc(100% + 41px);
+  font-size: 7px;
+  letter-spacing: 0.6px;
+  color: #d4c596;
+  white-space: nowrap;
+}
+.portrait-velvet {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 20%, #444730, #252b1f);
+  box-shadow: inset 0 0 28px #151a11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  color: #a29469;
+}
+.portrait-velvet > span {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #aaa17e;
+}
+.portrait.oval .frame-body,
+.portrait.oval .portrait-velvet {
+  border-radius: 50%;
+}
+.portrait.oval .frame-corner {
+  display: none;
+}
+.portrait.arch .frame-body,
+.portrait.arch .portrait-velvet {
+  border-radius: 48% 48% 1px 1px;
+}
+.portrait.arch .top-left,
+.portrait.arch .top-right {
+  display: none;
+}
+.portrait.small .portrait-velvet > span {
+  display: none;
+}
+.portrait.small .portrait-velvet > svg {
+  width: 25px;
+}
+.room-bottom {
+  position: absolute;
+  bottom: 13%;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #c8bb96;
+  gap: 20px;
+}
+.return-link {
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  color: #ded0ac;
+  font-size: 10px;
+}
+.return-link:hover {
+  color: #ffdea4;
+}
+.gallery-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: #bcb497;
+}
+.memory-count {
+  font-family: var(--display);
+  font-size: 13px;
+  color: #dfbf83;
+}
+.memory-count > span {
+  font-family: Manrope, sans-serif;
+  font-size: 8px;
+  color: #b5ab8e;
+}
+/* Memory letters use the browser's accessible dialog behavior. */
+.parchment-dialog {
+  position: fixed;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  padding: 25px;
+  max-width: min(930px, 94vw);
+  max-height: 92svh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #b0935e transparent;
+}
+.parchment-dialog::backdrop {
+  background: #0a110bce;
+  backdrop-filter: blur(7px);
+}
+.parchment-dialog[open] {
+  animation: letterAppear 0.6s both;
+}
+.parchment-sheet {
+  position: relative;
+  display: flex;
+  background: radial-gradient(ellipse at 50% 30%, #f3e3bc, #d0b17a);
+  padding: 45px;
+  box-shadow:
+    0 10px 80px #090c06b0,
+    inset 0 0 60px #8a591e45;
+  gap: 38px;
+  max-width: 520px;
+}
+.has-photo .parchment-sheet {
+  max-width: 850px;
+}
+.parchment-sheet:after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px solid #9e804c55;
+  pointer-events: none;
+}
+.parchment-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+  background: none;
+  color: #655035;
+  padding: 10px;
+  display: flex;
+}
+.parchment-close:hover {
+  color: #2e2619;
+}
+.memory-photo {
+  width: 38%;
+  align-self: center;
+  flex-shrink: 0;
+  transform: rotate(-2deg);
+  padding: 7px;
+  background: #ece1c2;
+  box-shadow: 2px 7px 13px #6b492655;
+}
+.memory-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 58svh;
+  object-fit: contain;
+}
+.memory-photo > span {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+  padding: 12px 3px 6px;
+  color: #80663e;
+}
+.parchment-writing {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+  z-index: 1;
+}
+.parchment-writing > svg {
+  color: #917039;
+  margin: 0 auto 17px;
+}
+.parchment-writing .eyebrow {
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: #866537;
+}
+.parchment-writing h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.1;
+  margin-top: 17px;
+}
+.ink-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 17px 0;
+  color: #9e7c46;
+}
+.ink-divider:before,
+.ink-divider:after {
+  content: "";
+  height: 1px;
+  width: 45px;
+  background: #96744050;
+}
+.memory-message {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  text-align: left;
+}
+.parchment-writing .ink-button {
+  margin: 15px auto 0;
+  justify-content: center;
+}
+.parchment-seal {
+  border: 1px solid #916b3470;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin: 25px auto 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 25px;
+  color: #997548;
+}
+/* Ambient loading and the continuous travel veil. */
+.loading-scene {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: #151c14eb;
+  padding: 30px;
+}
+.loading-sigil {
+  width: 70px;
+  color: var(--gold);
+  margin-bottom: 40px;
+  animation: loadingGlow 3s ease-in-out infinite;
+}
+.loading-scene h1 {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 400;
+  margin-top: 20px;
+  color: #e3d7b9;
+}
+.loading-scene p {
+  font-family: var(--serif);
+  font-style: italic;
+  color: #a8aa90;
+  font-size: 17px;
+}
+.loading-thread {
+  height: 1px;
+  width: 140px;
+  margin: 33px 0;
+  background: linear-gradient(90deg, transparent, #c8ad73, transparent);
+  animation: loadingGlow 2s infinite;
+}
+.travel-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
+  background: radial-gradient(ellipse, #33331f, #11180f 70%);
+  animation: travelVeil 1.8s both;
+  pointer-events: all;
+}
+.travel-veil > svg {
+  width: 50px;
+  height: 50px;
+  color: var(--gold);
+}
+.travel-veil > span {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-style: italic;
+  color: #d7c799;
+}
+.is-traveling .scene-image {
+  transform: scale(1.23);
+  transform-origin: 76% 55%;
+}
+.sound-notice {
+  position: absolute;
+  z-index: 50;
+  right: 5%;
+  top: 100px;
+  max-width: 260px;
+  font-family: var(--serif);
+  color: #e3d5af;
+  padding: 16px;
+  background: #272e20f5;
+  border: 1px solid #ac955c55;
+  font-size: 17px;
+}
+@keyframes enterCopy {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes worldAwakes {
+  from {
+    transform: scale(1.025);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes breathe {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mistDrift {
+  from {
+    transform: translateX(-5%);
+  }
+  to {
+    transform: translateX(5%);
+  }
+}
+@keyframes starFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+@keyframes portalPulse {
+  0%,
+  100% {
+    transform: scale(0.97);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+@keyframes portalExpansion {
+  0% {
+    opacity: 0;
+    clip-path: circle(0% at 80% 48%);
+  }
+  35% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 1;
+    clip-path: circle(130% at 80% 48%);
+  }
+  100% {
+    opacity: 1;
+    clip-path: circle(160% at 80% 48%);
+  }
+}
+@keyframes lightSway {
+  from {
+    transform: rotate(-8deg);
+    opacity: 0.4;
+  }
+  to {
+    transform: rotate(8deg);
+    opacity: 1;
+  }
+}
+@keyframes ceremonyVerse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  15%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes candleFloat {
+  from {
+    transform: translateY(0) scale(var(--scale));
+  }
+  to {
+    transform: translateY(-16px) scale(var(--scale));
+  }
+}
+@keyframes candleFlicker {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scaleX(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scaleY(1.1);
+  }
+  70% {
+    opacity: 0.7;
+    transform: scaleX(1.05);
+  }
+}
+@keyframes shieldSheen {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateX(-80px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(70px);
+  }
+}
+@keyframes unroll {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(-1.5deg) scaleY(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.5deg) scaleY(1);
+  }
+}
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes loadingGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 6px #d4b27410);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px #d4b27460);
+  }
+}
+@keyframes travelVeil {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  35%,
+  65% {
+    opacity: 1;
+  }
+}
+@media (min-width: 1600px) {
+  .intro-copy {
+    top: 20%;
+  }
+  .intro-copy h1 {
+    font-size: 90px;
+  }
+  .intro-description {
+    font-size: 21px;
+  }
+  .gold-button {
+    margin-top: 36px;
+  }
+  .world-header {
+    top: 55px;
+  }
+  .portal-whisper {
+    top: 57%;
+  }
+  .portrait-wall {
+    max-width: 1350px;
+  }
+  .experience {
+    min-height: 850px;
+  }
+}
+@media (max-height: 800px) and (min-width: 901px) {
+  .experience {
+    min-height: 690px;
+  }
+  .intro-copy {
+    top: 20%;
+  }
+  .intro-copy h1 {
+    font-size: 67px;
+  }
+  .intro-eyebrow {
+    margin-bottom: 18px;
+  }
+  .tiny-ornament {
+    margin: 15px 0 12px;
+  }
+  .intro-description {
+    font-size: 18px;
+  }
+  .gold-button {
+    margin-top: 23px;
+    padding: 17px 22px;
+  }
+  .world-header {
+    top: 37px;
+  }
+  .world-footer {
+    bottom: 35px;
+  }
+  .house-shield {
+    width: 235px;
+  }
+  .shield-column {
+    width: 310px;
+  }
+  .welcome-scroll {
+    padding: 35px;
+  }
+  .revelation-scene {
+    padding-top: 95px;
+  }
+  .gallery-scroll {
+    bottom: 24%;
+  }
+  .room-bottom {
+    bottom: 13%;
+  }
+}
+@media (max-width: 1100px) {
+  .dedication {
+    display: none;
+  }
+  .intro-copy {
+    left: 8%;
+  }
+  .intro-copy h1 {
+    font-size: 74px;
+  }
+  .intro-eyebrow {
+    font-size: 7px;
+    letter-spacing: 1.9px;
+  }
+  .intro-description {
+    font-size: 18px;
+  }
+  .school-passages {
+    left: 8%;
+    right: 8%;
+    gap: 3%;
+  }
+  .door-subtitle {
+    font-size: 12px;
+  }
+  .revelation-scene {
+    padding-left: 6%;
+    padding-right: 6%;
+    gap: 4vw;
+  }
+  .shield-column {
+    width: 300px;
+  }
+  .welcome-scroll {
+    width: 340px;
+  }
+  .gallery-hint {
+    display: none;
+  }
+  .portrait-plaque {
+    font-size: 11px;
+    padding: 4px 7px;
+  }
+}
+@media (max-width: 760px) {
+  .experience {
+    height: 100svh;
+    min-height: 740px;
+  }
+  .screen-border {
+    inset: 12px;
+  }
+  .world-header {
+    top: 30px;
+    left: 7%;
+    right: 7%;
+  }
+  .wordmark > svg {
+    width: 32px;
+    height: 32px;
+  }
+  .wordmark {
+    gap: 9px;
+  }
+  .wordmark > span {
+    font-size: 9px;
+    letter-spacing: 1.4px;
+  }
+  .wordmark > span > span {
+    font-size: 8px;
+    letter-spacing: 3.7px;
+  }
+  .sound-button {
+    padding: 12px 0 12px 12px;
+    gap: 7px;
+  }
+  .sound-button > span:not(.sound-light) {
+    display: none;
+  }
+  .sound-light {
+    margin-left: 1px;
+  }
+  .scene-image {
+    object-position: 65% center;
+  }
+  .scene-shading {
+    background:
+      linear-gradient(90deg, #141e14a1, #16201752 60%, #141d1429),
+      linear-gradient(
+        0deg,
+        #111b12eb,
+        transparent 48%,
+        #15201736 75%,
+        #15201782
+      );
+  }
+  .intro-copy {
+    top: 24%;
+    left: 9%;
+    right: 7%;
+  }
+  .intro-copy h1 {
+    font-size: clamp(57px, 11.5vw, 80px);
+    letter-spacing: -1px;
+    line-height: 1.13;
+  }
+  .title-last {
+    font-size: 1.14em;
+    letter-spacing: -1px;
+  }
+  .intro-eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.65px;
+    margin-bottom: 24px;
+    gap: 8px;
+  }
+  .intro-eyebrow > span {
+    width: 20px;
+  }
+  .intro-description {
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 0 1px 8px #192018;
+  }
+  .title-spark {
+    margin-left: 19px;
+    font-size: 22px;
+  }
+  .tiny-ornament {
+    margin: 20px 0 16px;
+  }
+  .gold-button {
+    margin-top: 27px;
+    padding: 18px 22px;
+    min-width: 251px;
+    width: max-content;
+  }
+  .headphone-note {
+    font-size: 8px;
+    gap: 6px;
+    margin-top: 17px;
+  }
+  .portal-whisper {
+    left: auto;
+    right: 13%;
+    top: 47%;
+    opacity: 0.8 !important;
+  }
+  .portal-whisper > span,
+  .whisper-line {
+    display: none;
+  }
+  .whisper-star {
+    font-size: 31px;
+  }
+  .intro-side-note {
+    right: 25px;
+    top: 33%;
+    font-size: 6px;
+    letter-spacing: 2px;
+  }
+  .world-footer {
+    bottom: 32px;
+    left: 8%;
+    right: 8%;
+  }
+  .chapter-marker {
+    font-size: 8px;
+    gap: 8px;
+  }
+  .chapter-line {
+    width: 20px;
+  }
+  .explore-help {
+    padding: 12px;
+  }
+  .explore-help > span {
+    display: none;
+  }
+  .journey-track {
+    left: 61%;
+    gap: 6px;
+  }
+  .journey-track > i {
+    width: 14px;
+  }
+  .journey-track > span {
+    width: 4px;
+    height: 4px;
+  }
+  .wand-copy {
+    left: 9%;
+    right: 9%;
+    top: 20%;
+    text-align: center;
+    max-width: none;
+  }
+  .wand-copy h1 {
+    font-size: 45px;
+    margin-top: 19px;
+  }
+  .wand-copy p {
+    font-size: 19px;
+  }
+  .wand-copy > .eyebrow {
+    font-size: 8px;
+  }
+  .touch-instruction {
+    font-size: 8px;
+    max-width: 240px;
+    margin: 17px auto 0;
+    line-height: 1.7;
+  }
+  .magic-portal {
+    top: 53%;
+    left: 30%;
+    width: 40%;
+    height: 30%;
+  }
+  .portal-label {
+    font-size: 15px;
+  }
+  .magic-portal > svg {
+    width: 45px;
+    height: 45px;
+  }
+  .wand-cursor {
+    display: block;
+  }
+  .wand-cursor > span {
+    height: 70px;
+    width: 4px;
+  }
+  .portal-expansion {
+    transform-origin: 50% 65%;
+  }
+  .ceremony-copy {
+    top: 34%;
+    left: 7%;
+    right: 7%;
+  }
+  .ceremony-copy > .eyebrow {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+  .ceremony-line {
+    font-size: 31px;
+    line-height: 1.4;
+  }
+  .ceremony-lines {
+    margin-top: 30px;
+  }
+  .floating-candles > span {
+    opacity: 0.5;
+  }
+  .revelation-scene {
+    padding: 125px 7% 110px;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+    gap: 28px;
+  }
+  .state-revelation {
+    height: auto;
+    min-height: 100svh;
+  }
+  .state-revelation .revelation-scene {
+    min-height: 100svh;
+  }
+  .state-revelation .world-background {
+    position: fixed;
+  }
+  .shield-column {
+    width: 100%;
+  }
+  .house-shield {
+    width: 215px;
+    margin-top: 9px;
+  }
+  .shield-column > .eyebrow {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+  .house-name h1 {
+    font-size: 30px;
+    margin: 7px 0;
+  }
+  .house-name p {
+    font-size: 16px;
+  }
+  .house-name > span {
+    font-size: 7px;
+  }
+  .welcome-scroll {
+    width: min(350px, 95%);
+    padding: 33px 29px;
+  }
+  .welcome-scroll h2 {
+    font-size: 31px;
+    margin-bottom: 15px;
+  }
+  .welcome-scroll p {
+    font-size: 18px;
+  }
+  .state-revelation .world-footer {
+    position: absolute;
+  }
+  .room-heading {
+    top: 17%;
+    left: 8%;
+    right: 8%;
+  }
+  .room-heading > .eyebrow {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+  .room-heading h1 {
+    font-size: 37px;
+    line-height: 1.13;
+  }
+  .room-heading p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .school-passages {
+    top: 37%;
+    bottom: 24%;
+    left: 0;
+    right: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    gap: 27px;
+    padding: 20px 35px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #a28b5144 transparent;
+    align-items: flex-end;
+  }
+  .passage {
+    flex-shrink: 0;
+    width: 153px;
+    height: 83%;
+    margin-bottom: 10px;
+  }
+  .passage-0 {
+    order: 0;
+    height: 100%;
+    margin-left: 8px;
+  }
+  .passage-1 {
+    order: 1;
+    height: 82%;
+  }
+  .passage-2 {
+    order: 2;
+    height: 91%;
+  }
+  .passage-3 {
+    order: 3;
+    height: 75%;
+    margin-right: 20px;
+  }
+  .passage-architecture {
+    min-height: 115px;
+    width: 125px;
+    border-width: 7px;
+  }
+  .door-title {
+    font-size: 11px;
+    margin-top: 15px;
+  }
+  .door-subtitle {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+  .door-action {
+    font-size: 7px;
+    margin-top: 8px;
+  }
+  .school-hint {
+    bottom: 15%;
+    font-size: 15px;
+    padding: 0 14%;
+    line-height: 1.5;
+    text-align: left;
+  }
+  .school-hint svg {
+    width: 24px;
+    height: 24px;
+  }
+  .restart-button {
+    right: 22px;
+    bottom: 77px;
+  }
+  .academy-scene .room-heading {
+    top: 16%;
+  }
+  .academy-scene .room-heading h1 {
+    font-size: 35px;
+  }
+  .academy-scene .room-heading p {
+    font-size: 15px;
+  }
+  .gallery-scroll {
+    left: 0;
+    right: 0;
+    top: 33%;
+    bottom: 24%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 30px 40px 60px;
+    scrollbar-width: thin;
+    scrollbar-color: #ac966440 transparent;
+  }
+  .portrait-wall {
+    min-width: 1180px;
+    max-width: none;
+    height: 100%;
+    min-height: 285px;
+  }
+  .portrait-one {
+    left: 0;
+    top: 0;
+    width: 143px;
+    height: 240px;
+  }
+  .portrait-two {
+    left: 195px;
+    top: 45px;
+    width: 115px;
+    height: 160px;
+  }
+  .portrait-three {
+    left: 370px;
+    top: 15px;
+    width: 224px;
+    height: 174px;
+  }
+  .portrait-four {
+    left: 651px;
+    top: 100px;
+    width: 105px;
+    height: 100px;
+  }
+  .portrait-five {
+    left: 815px;
+    top: 0;
+    width: 133px;
+    height: 202px;
+  }
+  .portrait-six {
+    left: 1010px;
+    top: 70px;
+    width: 111px;
+    height: 110px;
+  }
+  .portrait-plaque {
+    font-size: 11px;
+    max-width: 220px;
+  }
+  .frame-body {
+    padding: 8px;
+  }
+  .portrait-velvet > span {
+    font-size: 12px;
+  }
+  .room-bottom {
+    left: 8%;
+    right: 8%;
+    bottom: 13%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .return-link {
+    font-size: 9px;
+  }
+  .memory-count {
+    font-size: 12px;
+  }
+  .memory-count > span {
+    font-size: 7px;
+  }
+  .gallery-hint {
+    display: flex;
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .gallery-hint > svg {
+    width: 15px;
+  }
+  .state-academy .world-footer {
+    bottom: 28px;
+  }
+  .state-academy .restart-button {
+    bottom: 75px;
+  }
+  .state-academy .world-background .scene-image {
+    object-position: 30% center;
+  }
+  .parchment-dialog {
+    padding: 13px;
+    max-width: 96vw;
+    max-height: 94svh;
+  }
+  .parchment-sheet,
+  .has-photo .parchment-sheet {
+    padding: 45px 26px 30px;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 420px;
+  }
+  .parchment-sheet:after {
+    inset: 9px;
+  }
+  .memory-photo {
+    width: 66%;
+    max-width: 245px;
+    transform: rotate(-2deg);
+  }
+  .memory-photo img {
+    max-height: 34svh;
+    width: 100%;
+    height: auto;
+  }
+  .memory-photo > span {
+    font-size: 12px;
+  }
+  .parchment-writing .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.8px;
+  }
+  .parchment-writing > svg {
+    margin-bottom: 10px;
+  }
+  .parchment-writing h2 {
+    font-size: 30px;
+    margin-top: 12px;
+  }
+  .memory-message {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .parchment-close {
+    top: 12px;
+    right: 12px;
+  }
+  .loading-scene .eyebrow {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+  .loading-scene h1 {
+    font-size: 31px;
+  }
+  .loading-scene p {
+    font-size: 16px;
+  }
+  .loading-sigil {
+    width: 57px;
+  }
+  .sound-notice {
+    top: 84px;
+  }
+}
+@media (max-width: 390px) {
+  .intro-copy h1 {
+    font-size: 58px;
+  }
+  .intro-eyebrow {
+    font-size: 5.5px;
+    letter-spacing: 1.4px;
+  }
+  .intro-description {
+    font-size: 17px;
+  }
+  .intro-copy {
+    top: 25%;
+  }
+  .portal-whisper {
+    right: 11%;
+    top: 49%;
+  }
+  .room-heading h1 {
+    font-size: 34px;
+  }
+  .wand-copy h1 {
+    font-size: 40px;
+  }
+  .wordmark > span {
+    font-size: 8px;
+  }
+  .gallery-scroll {
+    bottom: 25%;
+  }
+  .memory-count > span {
+    font-size: 6px;
+  }
+  .room-bottom {
+    left: 7%;
+    right: 7%;
+  }
+  .return-link {
+    font-size: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    scroll-behavior: auto !important;
+  }
+  .scene-image,
+  .light-breath,
+  .floor-mist,
+  .intro-copy,
+  .whisper-star,
+  .title-spark,
+  .wand-copy,
+  .portal-ring,
+  .magic-portal > svg,
+  .floating-candles > span,
+  .floating-candles > span:before,
+  .ceremony-light,
+  .revelation-aura,
+  .shield-sheen,
+  .welcome-scroll,
+  .room-heading,
+  .loading-sigil,
+  .loading-thread,
+  .door-light {
+    animation: none !important;
+  }
+  .scene-image {
+    transition: opacity 0.2s !important;
+    transform: none !important;
+  }
+  .portal-expansion {
+    animation-duration: 0.4s;
+  }
+  .ceremony-line {
+    animation-duration: 3s;
+  }
+  .ceremony-line.act-two {
+    animation-delay: 3s;
+  }
+  .ceremony-line.act-three {
+    animation-delay: 6s;
+  }
+  .travel-veil {
+    animation-duration: 0.35s;
+  }
+  .parchment-dialog[open] {
+    animation-duration: 0.2s;
+  }
+  .house-name {
+    transition: opacity 0.3s;
+    transform: none;
+  }
+  .passage,
+  .portrait,
+  .gold-button {
+    transition: opacity 0.2s;
+  }
+  .passage:hover,
+  .portrait:hover,
+  .gold-button:hover {
+    transform: none;
+  }
+  .portal-whisper {
+    animation: none;
+  }
+  .is-traveling .scene-image {
+    transform: none !important;
+  }
+}
+
+.memory-author {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  text-align: right;
+  margin-top: 16px;
+}
