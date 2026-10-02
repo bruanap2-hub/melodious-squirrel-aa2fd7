@@ -2566,3 +2566,1768 @@ button:active {
   text-align: right;
   margin-top: 16px;
 }
+/* =========================================================
+   SALA COMUNAL — CENÁRIO CINEMATOGRÁFICO
+   ========================================================= */
+
+.common-room-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  color: #f3ead8;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(92, 72, 43, 0.18), transparent 34%),
+    linear-gradient(180deg, #080a08 0%, #10110d 45%, #070806 100%);
+  font-family: var(--serif);
+}
+
+.common-room-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 32%,
+      rgba(0, 0, 0, 0.22) 58%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+.common-room-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.38),
+      transparent 18%,
+      transparent 82%,
+      rgba(0, 0, 0, 0.42)
+    );
+  mix-blend-mode: multiply;
+}
+
+/* =========================================================
+   ATMOSFERA E ARQUITETURA
+   ========================================================= */
+
+.common-room-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.common-room-ceiling {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 30%;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 4, 3, 0.98) 0%,
+      rgba(10, 11, 9, 0.94) 55%,
+      rgba(19, 18, 14, 0.6) 100%
+    );
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 68%,
+    82% 54%,
+    64% 70%,
+    45% 48%,
+    27% 67%,
+    10% 52%,
+    0 66%
+  );
+}
+
+.common-room-stone-wall {
+  position: absolute;
+  inset: 12% 0 27%;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 13, 11, 0.96),
+      rgba(45, 43, 35, 0.86) 18%,
+      rgba(34, 34, 28, 0.92) 50%,
+      rgba(48, 45, 36, 0.84) 82%,
+      rgba(10, 11, 9, 0.97)
+    );
+  box-shadow:
+    inset 0 35px 70px rgba(0, 0, 0, 0.62),
+    inset 0 -30px 50px rgba(0, 0, 0, 0.55);
+}
+
+.common-room-stone-wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 0 7%,
+      rgba(0, 0, 0, 0.28) 7.2% 7.7%,
+      transparent 8% 19%,
+      rgba(0, 0, 0, 0.2) 19.2% 19.7%,
+      transparent 20% 34%,
+      rgba(0, 0, 0, 0.24) 34.2% 34.8%,
+      transparent 35% 51%,
+      rgba(0, 0, 0, 0.2) 51.2% 51.7%,
+      transparent 52% 68%,
+      rgba(0, 0, 0, 0.24) 68.2% 68.7%,
+      transparent 69% 84%,
+      rgba(0, 0, 0, 0.28) 84.2% 84.8%,
+      transparent 85%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0 16%,
+      rgba(0, 0, 0, 0.2) 16.3% 17%,
+      transparent 17.2% 35%,
+      rgba(0, 0, 0, 0.2) 35.3% 36%,
+      transparent 36.2% 57%,
+      rgba(0, 0, 0, 0.22) 57.3% 58%,
+      transparent 58.2% 78%,
+      rgba(0, 0, 0, 0.2) 78.3% 79%,
+      transparent 79.2%
+    );
+  background-size: 100% 100%;
+}
+
+.common-room-stone-wall::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.24;
+  background:
+    repeating-linear-gradient(
+      8deg,
+      transparent 0 18px,
+      rgba(255, 255, 255, 0.025) 19px 20px,
+      transparent 21px 42px
+    );
+}
+
+/* =========================================================
+   JANELA E LUA
+   ========================================================= */
+
+.common-room-window {
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  width: min(27vw, 390px);
+  height: min(35vw, 500px);
+  min-width: 180px;
+  min-height: 270px;
+  transform: translateX(-50%);
+  border: 14px solid #171812;
+  border-radius: 48% 48% 8px 8px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(53, 67, 78, 0.88),
+      rgba(10, 19, 28, 0.98)
+    );
+  box-shadow:
+    0 0 0 4px rgba(77, 68, 51, 0.32),
+    inset 0 0 50px rgba(0, 0, 0, 0.82),
+    0 25px 70px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+}
+
+.common-room-window::before,
+.common-room-window::after {
+  content: "";
+  position: absolute;
+  background: rgba(18, 20, 18, 0.85);
+  z-index: 3;
+}
+
+.common-room-window::before {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 7px;
+  transform: translateX(-50%);
+}
+
+.common-room-window::after {
+  left: 0;
+  right: 0;
+  top: 51%;
+  height: 7px;
+  transform: translateY(-50%);
+}
+
+.common-room-moon {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  top: 17%;
+  right: 18%;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 36% 32%,
+      #fffce8 0 8%,
+      #e8dfbb 34%,
+      #aaa98f 72%,
+      #686b5f 100%
+    );
+  box-shadow:
+    0 0 32px rgba(226, 221, 184, 0.28),
+    0 0 80px rgba(170, 185, 190, 0.12);
+}
+
+.common-room-moon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at 25% 65%,
+      rgba(72, 74, 67, 0.28) 0 7%,
+      transparent 8%
+    ),
+    radial-gradient(
+      circle at 63% 30%,
+      rgba(72, 74, 67, 0.22) 0 9%,
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 72% 72%,
+      rgba(72, 74, 67, 0.2) 0 6%,
+      transparent 7%
+    );
+}
+
+.common-room-cloud {
+  position: absolute;
+  display: block;
+  width: 180px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(193, 205, 202, 0.1);
+  filter: blur(7px);
+}
+
+.cloud-one {
+  top: 25%;
+  left: -20%;
+  animation: commonCloudDrift 18s ease-in-out infinite alternate;
+}
+
+.cloud-two {
+  top: 58%;
+  right: -28%;
+  animation: commonCloudDrift 23s ease-in-out infinite alternate-reverse;
+}
+
+/* =========================================================
+   CORTINAS E VIGAS
+   ========================================================= */
+
+.common-room-curtain {
+  position: absolute;
+  top: 5%;
+  width: 19%;
+  height: 58%;
+  z-index: 5;
+  background:
+    linear-gradient(
+      90deg,
+      #080908 0%,
+      #191710 18%,
+      #33271a 48%,
+      #15120d 78%,
+      #050605 100%
+    );
+  box-shadow:
+    inset -20px 0 30px rgba(0, 0, 0, 0.65),
+    0 20px 45px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+}
+
+.curtain-left {
+  left: -5%;
+  transform: skewY(5deg);
+  border-radius: 0 0 70% 20%;
+}
+
+.curtain-right {
+  right: -5%;
+  transform: skewY(-5deg);
+  border-radius: 0 0 20% 70%;
+}
+
+.common-room-beam {
+  position: absolute;
+  height: 22px;
+  background:
+    linear-gradient(
+      180deg,
+      #0b0b08,
+      #3d3020 45%,
+      #17140e
+    );
+  border-top: 1px solid rgba(177, 151, 102, 0.18);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.72);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  z-index: 6;
+}
+
+.beam-one {
+  width: 54%;
+  top: 13%;
+  left: -5%;
+  transform: rotate(7deg);
+}
+
+.beam-two {
+  width: 49%;
+  top: 13%;
+  right: -4%;
+  transform: rotate(-7deg);
+}
+
+/* =========================================================
+   PISO
+   ========================================================= */
+
+.common-room-floor {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: -4%;
+  height: 36%;
+  transform: perspective(700px) rotateX(58deg);
+  transform-origin: bottom;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.12) 0 2px,
+      transparent 2px 100px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0 2px,
+      transparent 2px 78px
+    ),
+    linear-gradient(
+      180deg,
+      #3a3021,
+      #19160f
+    );
+  box-shadow:
+    inset 0 40px 80px rgba(0, 0, 0, 0.68);
+}
+
+.common-room-rug {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: min(56vw, 820px);
+  height: min(25vw, 350px);
+  min-width: 420px;
+  min-height: 180px;
+  transform: translateX(-50%) perspective(600px) rotateX(48deg);
+  transform-origin: center bottom;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      #4a3924 0 36%,
+      #2b2117 55%,
+      #17130e 75%,
+      transparent 76%
+    );
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.55),
+    inset 0 0 35px rgba(118, 84, 42, 0.12);
+}
+
+/* =========================================================
+   LAREIRA
+   ========================================================= */
+
+.common-room-fireplace {
+  position: absolute;
+  left: 6%;
+  bottom: 19%;
+  width: min(28vw, 420px);
+  height: min(34vw, 500px);
+  min-width: 260px;
+  min-height: 320px;
+  z-index: 8;
+}
+
+.common-room-mantel {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 110%;
+  height: 34px;
+  background:
+    linear-gradient(
+      180deg,
+      #4a3b27,
+      #241d13 45%,
+      #0f0d09
+    );
+  border-top: 2px solid rgba(179, 149, 94, 0.24);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+.common-room-firebox {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 0;
+  height: 80%;
+  border: 14px solid #211b13;
+  border-bottom-width: 22px;
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      rgba(229, 115, 35, 0.32),
+      transparent 48%
+    ),
+    #050504;
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.9),
+    0 15px 35px rgba(0, 0, 0, 0.65);
+}
+
+.common-flame {
+  position: absolute;
+  display: block;
+  bottom: 12%;
+  left: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 55% 45% 55% 45%;
+  background:
+    radial-gradient(
+      circle at 50% 70%,
+      #fff3a0 0 12%,
+      #f6c34b 26%,
+      #db6a22 58%,
+      rgba(90, 26, 7, 0.1) 78%
+    );
+  filter: blur(0.2px);
+  box-shadow:
+    0 0 35px rgba(235, 129, 43, 0.25);
+}
+
+.flame-main {
+  width: 74px;
+  height: 150px;
+  margin-left: -37px;
+  animation: commonFlame 1.15s ease-in-out infinite alternate;
+}
+
+.flame-small {
+  width: 43px;
+  height: 90px;
+  margin-left: -21px;
+  left: 34%;
+  animation: commonFlame 0.82s ease-in-out infinite alternate-reverse;
+}
+
+.flame-side {
+  width: 42px;
+  height: 104px;
+  margin-left: -21px;
+  left: 67%;
+  animation: commonFlame 0.94s ease-in-out infinite alternate;
+}
+
+.common-ember {
+  position: absolute;
+  bottom: 22%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #f6c86d;
+  box-shadow: 0 0 10px rgba(255, 173, 73, 0.85);
+  animation: commonEmber 2.5s linear infinite;
+}
+
+.ember-one {
+  left: 30%;
+  animation-delay: -0.7s;
+}
+
+.ember-two {
+  left: 53%;
+  animation-delay: -1.5s;
+}
+
+.ember-three {
+  left: 72%;
+  animation-delay: -2s;
+}
+
+/* =========================================================
+   ESTANTE
+   ========================================================= */
+
+.common-room-shelf {
+  position: absolute;
+  right: 6%;
+  bottom: 22%;
+  width: min(25vw, 380px);
+  min-width: 270px;
+  height: min(39vw, 540px);
+  min-height: 380px;
+  padding: 28px 20px 20px;
+  z-index: 7;
+  border: 10px solid #211a11;
+  background:
+    linear-gradient(
+      90deg,
+      #120e09,
+      #332617 20%,
+      #1c150d 70%,
+      #0c0a07
+    );
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.7),
+    0 25px 45px rgba(0, 0, 0, 0.5);
+}
+
+.common-shelf-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  height: 25%;
+  padding: 0 8px 9px;
+  border-bottom: 8px solid #4a3420;
+}
+
+.common-book {
+  display: block;
+  width: 18px;
+  height: 76%;
+  border-radius: 2px 2px 0 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.38),
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(0, 0, 0, 0.35)
+    ),
+    #51402b;
+  box-shadow:
+    2px 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.book-0 {
+  height: 68%;
+  background-color: #44382a;
+}
+
+.book-1 {
+  height: 82%;
+  background-color: #62412d;
+}
+
+.book-2 {
+  height: 73%;
+  background-color: #303b35;
+}
+
+.book-3 {
+  height: 88%;
+  background-color: #5a4c31;
+}
+
+.book-4 {
+  height: 64%;
+  background-color: #34342d;
+}
+
+/* =========================================================
+   SOFÁ E MESA
+   ========================================================= */
+
+.common-room-sofa {
+  position: absolute;
+  left: 37%;
+  bottom: 19%;
+  width: min(27vw, 430px);
+  height: min(17vw, 230px);
+  min-width: 300px;
+  min-height: 170px;
+  z-index: 10;
+  border-radius: 45px 45px 20px 20px;
+  background:
+    linear-gradient(
+      180deg,
+      #4b3b28,
+      #261d14 52%,
+      #130f0a
+    );
+  box-shadow:
+    inset 0 15px 20px rgba(255, 255, 255, 0.035),
+    0 25px 45px rgba(0, 0, 0, 0.58);
+}
+
+.common-room-sofa::before {
+  content: "";
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: -18%;
+  height: 42%;
+  border-radius: 35px 35px 12px 12px;
+  background:
+    linear-gradient(
+      180deg,
+      #5a4932,
+      #322719
+    );
+  box-shadow:
+    inset 0 -12px 15px rgba(0, 0, 0, 0.3);
+}
+
+.common-room-sofa span {
+  position: absolute;
+  top: 16%;
+  width: 31%;
+  height: 42%;
+  border-radius: 18px;
+  background: rgba(109, 85, 56, 0.55);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.28);
+}
+
+.common-room-sofa span:first-child {
+  left: 11%;
+}
+
+.common-room-sofa span:last-child {
+  right: 11%;
+}
+
+.common-room-table {
+  position: absolute;
+  left: 43%;
+  bottom: 8%;
+  width: 18%;
+  height: 17%;
+  min-width: 230px;
+  min-height: 120px;
+  z-index: 13;
+  transform: perspective(500px) rotateX(12deg);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      #4d3821 0 55%,
+      #241a10 75%
+    );
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.62);
+}
+
+.table-book {
+  position: absolute;
+  width: 32%;
+  height: 26%;
+  left: 32%;
+  top: 22%;
+  transform: rotate(-8deg);
+  background:
+    linear-gradient(
+      180deg,
+      #5a4930,
+      #2d2115
+    );
+  box-shadow: 4px 5px 8px rgba(0, 0, 0, 0.38);
+}
+
+.table-box {
+  position: absolute;
+  width: 17%;
+  height: 18%;
+  right: 24%;
+  top: 46%;
+  transform: rotate(14deg);
+  border: 1px solid rgba(207, 179, 118, 0.24);
+  background: #211a10;
+}
+
+/* =========================================================
+   VELAS
+   ========================================================= */
+
+.common-candle {
+  position: absolute;
+  z-index: 15;
+  width: 14px;
+  height: 70px;
+  border-radius: 4px 4px 2px 2px;
+  background:
+    linear-gradient(
+      90deg,
+      #d5c7a4,
+      #f1e4bd 50%,
+      #b7a681
+    );
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.common-candle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  width: 11px;
+  height: 19px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 45% 45%;
+  background:
+    radial-gradient(
+      circle at 50% 75%,
+      #fff2a1 0 18%,
+      #f3a83e 43%,
+      rgba(235, 91, 23, 0.35) 68%,
+      transparent 72%
+    );
+  filter: blur(0.2px);
+  box-shadow:
+    0 0 18px rgba(243, 168, 62, 0.42);
+  animation: commonCandle 1s ease-in-out infinite alternate;
+}
+
+.candle-left {
+  left: 35%;
+  bottom: 35%;
+}
+
+.candle-right {
+  right: 32%;
+  bottom: 39%;
+}
+
+.candle-front {
+  left: 64%;
+  bottom: 28%;
+  transform: scale(0.82);
+}
+
+/* =========================================================
+   QUADROS
+   ========================================================= */
+
+.common-room-portrait {
+  position: absolute;
+  z-index: 9;
+  border: 10px solid #241b10;
+  background:
+    linear-gradient(
+      145deg,
+      #51432e,
+      #1a140d
+    );
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.56),
+    inset 0 0 16px rgba(0, 0, 0, 0.72);
+}
+
+.portrait-shadow::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(189, 161, 104, 0.2);
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(145, 123, 83, 0.13),
+      transparent 60%
+    ),
+    #15130e;
+}
+
+.portrait-a {
+  left: 32%;
+  top: 22%;
+  width: 120px;
+  height: 170px;
+  transform: rotate(-4deg);
+}
+
+.portrait-b {
+  right: 31%;
+  top: 25%;
+  width: 145px;
+  height: 110px;
+  transform: rotate(5deg);
+}
+
+/* =========================================================
+   PARTÍCULAS
+   ========================================================= */
+
+.common-room-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 17;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle, rgba(235, 211, 160, 0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 238, 189, 0.35) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.2) 0 1px, transparent 1.5px);
+  background-size: 140px 180px, 210px 260px, 310px 340px;
+  background-position: 20px 30px, 90px 120px, 160px 70px;
+  animation: commonDust 22s linear infinite;
+}
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.common-room-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 28px 38px;
+  pointer-events: none;
+}
+
+.common-back-button {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid rgba(204, 180, 132, 0.25);
+  border-radius: 999px;
+  color: rgba(243, 234, 216, 0.84);
+  background: rgba(9, 9, 7, 0.56);
+  backdrop-filter: blur(10px);
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.common-back-button:hover {
+  color: #fff4d7;
+  border-color: rgba(220, 193, 141, 0.52);
+  background: rgba(24, 20, 13, 0.78);
+  transform: translateX(-2px);
+}
+
+.common-room-heading {
+  max-width: 470px;
+  text-align: right;
+  pointer-events: none;
+}
+
+.common-room-heading .eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: rgba(210, 181, 125, 0.76);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+}
+
+.common-room-heading h1 {
+  margin: 0;
+  color: #efe3c9;
+  font-family: var(--serif);
+  font-size: clamp(27px, 3vw, 47px);
+  font-weight: 400;
+  line-height: 1.02;
+  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.72);
+}
+
+.common-room-heading h1 em {
+  color: #c8aa75;
+  font-style: italic;
+}
+
+.common-room-heading p {
+  margin: 10px 0 0;
+  color: rgba(229, 216, 191, 0.65);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   TEXTO DO ENIGMA
+   ========================================================= */
+
+.common-room-story {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: min(88%, 760px);
+  transform: translateX(-50%);
+  color: rgba(235, 222, 198, 0.8);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.8);
+}
+
+.common-story-line {
+  flex: 1;
+  height: 1px;
+  max-width: 90px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(201, 171, 117, 0.5),
+      transparent
+    );
+}
+
+/* =========================================================
+   PONTOS DE INTERAÇÃO
+   ========================================================= */
+
+.common-interaction-map {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+}
+
+.common-hotspot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border: 1px solid rgba(215, 185, 126, 0.25);
+  border-radius: 50%;
+  color: rgba(238, 219, 177, 0.82);
+  background:
+    radial-gradient(
+      circle,
+      rgba(65, 53, 32, 0.8),
+      rgba(15, 13, 9, 0.75)
+    );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    inset 0 0 18px rgba(194, 157, 89, 0.09);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.common-hotspot small {
+  position: absolute;
+  bottom: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(225, 207, 172, 0.55);
+  font-family: var(--sans);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.common-hotspot:hover,
+.common-hotspot.is-selected {
+  color: #fff1c9;
+  border-color: rgba(235, 204, 145, 0.75);
+  box-shadow:
+    0 0 0 7px rgba(200, 166, 102, 0.05),
+    0 0 30px rgba(208, 170, 97, 0.18),
+    inset 0 0 22px rgba(216, 179, 108, 0.12);
+  transform: scale(1.08);
+}
+.common-hotspot.is-found {
+  color: #f4d38e;
+  border-color: rgba(239, 205, 131, 0.72);
+}
+
+.hotspot-aura {
+  position: absolute;
+  inset: -9px;
+  border-radius: inherit;
+  border: 1px solid rgba(212, 177, 107, 0.1);
+  opacity: 0.45;
+  animation: hotspotPulse 2.8s ease-in-out infinite;
+}
+
+.hotspot-flame {
+  left: 18%;
+  bottom: 40%;
+}
+
+.hotspot-moon {
+  left: 50%;
+  top: 39%;
+  transform: translateX(-50%);
+}
+
+.hotspot-book {
+  right: 20%;
+  bottom: 41%;
+}
+
+.hotspot-key {
+  right: 43%;
+  top: 48%;
+}
+
+/* =========================================================
+   PORTA SECRETA
+   ========================================================= */
+
+.common-secret-door {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(20, 17, 10, 0.15),
+      rgba(0, 0, 0, 0.68) 75%
+    );
+  transition:
+    opacity 800ms ease,
+    visibility 800ms ease;
+}
+
+.common-secret-door.door-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.secret-door-glow {
+  position: absolute;
+  width: min(55vw, 760px);
+  height: min(70vw, 820px);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(224, 192, 124, 0.16),
+      rgba(116, 89, 43, 0.06) 40%,
+      transparent 72%
+    );
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.door-open .secret-door-glow {
+  opacity: 1;
+}
+
+.secret-door-frame {
+  position: relative;
+  width: min(33vw, 470px);
+  height: min(55vw, 680px);
+  min-width: 280px;
+  min-height: 420px;
+  border: 18px solid #251d12;
+  border-radius: 48% 48% 5px 5px;
+  background: #090907;
+  box-shadow:
+    0 0 0 4px rgba(157, 125, 71, 0.2),
+    0 30px 90px rgba(0, 0, 0, 0.8);
+  transform: scale(0.88);
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+.door-open .secret-door-frame {
+  transform: scale(1);
+}
+
+.secret-door-slab {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(215, 180, 108, 0.8);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(130, 101, 52, 0.16),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      #40321f,
+      #17130d 45%,
+      #2e2416
+    );
+  transition:
+    transform 1.3s cubic-bezier(0.18, 0.78, 0.22, 1),
+    opacity 900ms ease;
+}
+
+.door-open .secret-door-slab {
+  transform: translateY(-105%);
+  opacity: 0;
+}
+
+.secret-door-slab::before {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  border: 1px solid rgba(205, 173, 111, 0.24);
+  border-radius: 50% 50% 4px 4px;
+  box-shadow:
+    inset 0 0 35px rgba(0, 0, 0, 0.6);
+}
+
+.secret-door-beyond {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 22px;
+  padding-bottom: 20%;
+  background:
+    radial-gradient(
+      circle at center 35%,
+      rgba(227, 198, 139, 0.22),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      #1c211c,
+      #080a08 72%
+    );
+}
+
+.secret-door-beyond span {
+  display: block;
+  width: 34px;
+  height: 110px;
+  border-radius: 50% 50% 0 0;
+  background:
+    linear-gradient(
+      90deg,
+      #0c0e0c,
+      #424535,
+      #0b0c0b
+    );
+  box-shadow: 0 0 20px rgba(190, 170, 119, 0.09);
+}
+
+/* =========================================================
+   CÂMARA DAS MEMÓRIAS
+   ========================================================= */
+
+.memory-chamber {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  z-index: 8;
+  width: min(78vw, 720px);
+  transform: translate(-50%, 30px);
+  opacity: 0;
+  text-align: center;
+  pointer-events: none;
+  transition:
+    opacity 900ms ease 650ms,
+    transform 900ms ease 650ms;
+}
+
+.door-open .memory-chamber {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.memory-chamber .eyebrow {
+  display: block;
+  color: rgba(218, 184, 116, 0.8);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+}
+
+.memory-chamber h2 {
+  margin: 8px 0 6px;
+  color: #f1e5cb;
+  font-size: clamp(22px, 2.5vw, 35px);
+  font-weight: 400;
+}
+
+.memory-chamber p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: rgba(226, 211, 183, 0.67);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.memory-niches {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.memory-niches span {
+  min-width: 105px;
+  padding: 8px 12px;
+  border: 1px solid rgba(204, 173, 111, 0.17);
+  background: rgba(16, 14, 9, 0.55);
+  color: rgba(222, 202, 164, 0.58);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.memory-entry-button {
+  margin-top: 18px;
+  min-height: 44px;
+  padding: 11px 19px;
+  border: 1px solid rgba(221, 189, 125, 0.35);
+  border-radius: 999px;
+  color: #f0dfbb;
+  background: rgba(38, 30, 18, 0.75);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.memory-entry-button:hover {
+  background: rgba(73, 56, 31, 0.8);
+  border-color: rgba(225, 193, 129, 0.7);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CONTROLES E PROGRESSO
+   ========================================================= */
+
+.common-room-controls {
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.puzzle-progress {
+  display: flex;
+  gap: 6px;
+}
+
+.puzzle-progress i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(214, 188, 133, 0.2);
+  box-shadow: 0 0 0 rgba(216, 176, 96, 0);
+  transition:
+    background 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.puzzle-progress i.lit {
+  background: #dfbd72;
+  box-shadow: 0 0 10px rgba(223, 189, 114, 0.5);
+}
+
+.common-reset {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid rgba(210, 184, 132, 0.16);
+  border-radius: 999px;
+  color: rgba(222, 205, 177, 0.48);
+  background: rgba(7, 8, 6, 0.35);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.common-reset:hover {
+  color: rgba(239, 221, 187, 0.82);
+  border-color: rgba(210, 184, 132, 0.35);
+}
+
+.common-room-mobile-hint {
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  z-index: 25;
+  transform: translateX(-50%);
+  color: rgba(220, 205, 178, 0.32);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  pointer-events: none;
+}
+
+.common-room-solved-hint {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  z-index: 44;
+  transform: translateX(-50%);
+  color: rgba(235, 208, 149, 0.8);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  animation: solvedHint 900ms ease both;
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes commonFlame {
+  0% {
+    transform: scaleX(0.88) rotate(-3deg) translateY(2px);
+  }
+  50% {
+    transform: scaleX(1.06) rotate(2deg) translateY(-3px);
+  }
+  100% {
+    transform: scaleX(0.94) rotate(-1deg) translateY(1px);
+  }
+}
+
+@keyframes commonEmber {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(18px, -115px, 0) scale(0.2);
+  }
+}
+
+@keyframes commonCandle {
+  0% {
+    transform: translateX(-50%) scale(0.88);
+  }
+  100% {
+    transform: translateX(-50%) scale(1.08) translateY(-2px);
+  }
+}
+
+@keyframes commonDust {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-18px, -10px, 0);
+  }
+  100% {
+    transform: translate3d(8px, -20px, 0);
+  }
+}
+
+@keyframes commonCloudDrift {
+  0% {
+    transform: translateX(-12px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(70px);
+    opacity: 0.12;
+  }
+}
+
+@keyframes hotspotPulse {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.65;
+  }
+}
+
+@keyframes solvedHint {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+    }
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .common-room-header {
+    padding: 20px 20px;
+  }
+
+  .common-room-heading {
+    max-width: 330px;
+  }
+
+  .common-room-heading h1 {
+    font-size: clamp(23px, 5vw, 34px);
+  }
+
+  .common-room-fireplace {
+    left: 2%;
+    transform: scale(0.82);
+    transform-origin: bottom left;
+  }
+
+  .common-room-shelf {
+    right: 2%;
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
+
+  .common-room-sofa {
+    left: 50%;
+    transform: translateX(-50%) scale(0.88);
+    transform-origin: bottom center;
+  }
+
+  .common-room-table {
+    left: 50%;
+    transform: translateX(-50%) scale(0.82);
+    transform-origin: bottom center;
+  }
+
+  .portrait-a {
+    left: 29%;
+  }
+
+  .portrait-b {
+    right: 27%;
+  }
+}
+
+@media (max-width: 700px) {
+  .common-room-header {
+    display: block;
+    padding: 14px 15px;
+  }
+
+  .common-back-button {
+    font-size: 10px;
+    min-height: 40px;
+  }
+
+  .common-room-heading {
+    max-width: 290px;
+    margin: 15px 0 0 auto;
+  }
+
+  .common-room-heading h1 {
+    font-size: 25px;
+  }
+
+  .common-room-heading p {
+    font-size: 11px;
+  }
+
+  .common-room-window {
+    top: 17%;
+    width: 190px;
+    height: 280px;
+  }
+
+  .common-room-fireplace {
+    left: -8%;
+    bottom: 23%;
+    transform: scale(0.62);
+  }
+
+  .common-room-shelf {
+    right: -8%;
+    bottom: 23%;
+    transform: scale(0.6);
+  }
+
+  .common-room-sofa {
+    left: 50%;
+    bottom: 17%;
+    width: 320px;
+    height: 180px;
+    transform: translateX(-50%) scale(0.75);
+  }
+
+  .common-room-table {
+    bottom: 7%;
+    transform: translateX(-50%) scale(0.65);
+  }
+
+  .common-room-rug {
+    width: 480px;
+    height: 220px;
+    bottom: 2%;
+  }
+
+  .common-hotspot {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hotspot-flame {
+    left: 17%;
+    bottom: 42%;
+  }
+
+  .hotspot-moon {
+    top: 43%;
+  }
+
+  .hotspot-book {
+    right: 16%;
+    bottom: 42%;
+  }
+
+  .hotspot-key {
+    right: 41%;
+    top: 52%;
+  }
+
+  .common-room-story {
+    bottom: 66px;
+    width: 92%;
+    font-size: 10px;
+  }
+
+  .common-room-controls {
+    right: 15px;
+    bottom: 16px;
+  }
+
+  .common-reset {
+    display: none;
+  }
+
+  .common-room-mobile-hint {
+    top: 69%;
+    width: 80%;
+  }
+
+  .secret-door-frame {
+    width: 270px;
+    height: 430px;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .memory-chamber {
+    bottom: 4%;
+    width: 90%;
+  }
+
+  .memory-chamber h2 {
+    font-size: 22px;
+  }
+
+  .memory-chamber p {
+    font-size: 11px;
+  }
+
+  .memory-niches span {
+    min-width: 76px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .common-room-heading {
+    max-width: 245px;
+  }
+
+  .common-room-heading h1 {
+    font-size: 21px;
+  }
+
+  .common-room-heading p {
+    display: none;
+  }
+
+  .common-room-window {
+    top: 19%;
+    width: 155px;
+    height: 235px;
+  }
+
+  .common-room-moon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .common-room-fireplace {
+    left: -19%;
+    bottom: 25%;
+    transform: scale(0.5);
+  }
+
+  .common-room-shelf {
+    right: -19%;
+    bottom: 25%;
+    transform: scale(0.5);
+  }
+
+  .common-room-sofa {
+    bottom: 18%;
+    transform: translateX(-50%) scale(0.6);
+  }
+
+  .common-room-table {
+    bottom: 8%;
+    transform: translateX(-50%) scale(0.52);
+  }
+
+  .common-room-mobile-hint {
+    top: 72%;
+    font-size: 8px;
+  }
+
+  .common-room-story {
+    bottom: 58px;
+    font-size: 9px;
+  }
+
+  .common-story-line {
+    max-width: 35px;
+  }
+
+  .common-room-controls {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .puzzle-progress {
+    gap: 5px;
+  }
+
+  .secret-door-frame {
+    width: 235px;
+    height: 370px;
+    border-width: 12px;
+  }
+
+  .memory-chamber {
+    bottom: 3%;
+  }
+
+  .memory-chamber .eyebrow {
+    font-size: 7px;
+  }
+
+  .memory-chamber h2 {
+    font-size: 18px;
+  }
+
+  .memory-chamber p {
+    display: none;
+  }
+
+  .memory-niches {
+    margin-top: 10px;
+    gap: 5px;
+  }
+
+  .memory-niches span {
+    min-width: 65px;
+    padding: 6px 7px;
+    font-size: 7px;
+  }
+}
+
+/* =========================================================
+   MOVIMENTO REDUZIDO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .common-room-particles,
+  .common-room-cloud,
+  .common-flame,
+  .common-ember,
+  .common-candle::before,
+  .hotspot-aura {
+    animation: none !important;
+  }
+
+  .common-back-button,
+  .common-hotspot,
+  .secret-door-frame,
+  .secret-door-slab,
+  .common-secret-door,
+  .memory-chamber {
+    transition-duration: 1ms !important;
+  }
+    }  
