@@ -16,7 +16,8 @@ export const portraits = [
     title: "Meu anjo",
     author: "Sofia",
     alt: "Fotografia original de Bia e sua amiga, juntas na escola.",
-    message: "Vc sempre será meu anjo,mo anielo\n— Sofia",
+    message:
+      "Feliz aniversário, Bia! 💗🏐 Que seu dia seja maravilhoso e cheio de coisas boas! Você sabe que no vôlei é nós duas: se você cai, eu caio; se você sai, eu também saio 😂😂 Parece até que estamos conectadas!\n\nObrigada por todos os momentos e por ser essa pessoa incrível. Que Deus abençoe muito sua vida e que você continue sendo essa menina maravilhosa. Te adoro! 💕",
     shape: "tall",
     position: "one",
   },
@@ -35,8 +36,7 @@ export const portraits = [
     title: "Dentro e fora da quadra",
     author: "",
     alt: "Fotografia original de Bia sorrindo ao lado de sua amiga.",
-    message:
-      "Feliz aniversário, Bia! 💗🏐 Que seu dia seja maravilhoso e cheio de coisas boas! Você sabe que no vôlei é nós duas: se você cai, eu caio; se você sai, eu também saio 😂😂 Parece até que estamos conectadas!\n\nObrigada por todos os momentos e por ser essa pessoa incrível. Que Deus abençoe muito sua vida e que você continue sendo essa menina maravilhosa. Te adoro! 💕",
+    message: "Vc sempre será meu anjo,mo anielo\n— Sofia",
     shape: "wide",
     position: "three",
   },
@@ -103,6 +103,7 @@ export const destinations = [
 export function sceneUrl(name, width = 1920) {
   return `/.netlify/images?url=/img/${name}.png&w=${width}&fm=webp&q=85`;
 }
+
 export function reducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
