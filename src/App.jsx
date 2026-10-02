@@ -19,10 +19,10 @@ import Particles from "./components/Particles";
 import HouseShield from "./components/HouseShield";
 import Ceremony from "./components/Ceremony";
 import Academy from "./components/Academy";
+import CommonRoom from "./components/CommonRoom";
 import Parchment from "./components/Parchment";
 import { STATES, destinations, sceneUrl, reducedMotion } from "./lib/world";
 import { magicAudio } from "./lib/audio";
-
 function Sigil({ className = "" }) {
   return (
     <svg
@@ -54,6 +54,7 @@ const stateLabels = {
   REVELATION: "O pertencimento",
   SCHOOL: "Salão Principal",
   ACADEMY: "Academia",
+  COMMON: "Sala Comunal",
 };
 const roomIcons = {
   star: Sparkles,
@@ -82,7 +83,8 @@ export default function App() {
   const headingRef = useRef(null);
   const [width] = useState(() => (window.innerWidth < 700 ? 1200 : 1920));
   const isAcademy = state === STATES.ACADEMY;
-  const inWorld = state === STATES.SCHOOL || isAcademy;
+const isCommonRoom = state === STATES.COMMON;
+const inWorld = state === STATES.SCHOOL || isAcademy || isCommonRoom;
   const ritual = [STATES.CEREMONY, STATES.REVELATION].includes(state);
   const schedule = useCallback((callback, delay) => {
     const id = setTimeout(callback, delay);
@@ -218,8 +220,10 @@ export default function App() {
     [schedule],
   );
   const enterSchool = () => moveThrough(STATES.SCHOOL);
-  const enterAcademy = () => moveThrough(STATES.ACADEMY);
-  const exitAcademy = () => moveThrough(STATES.SCHOOL);
+const enterAcademy = () => moveThrough(STATES.ACADEMY);
+const exitAcademy = () => moveThrough(STATES.SCHOOL);
+const enterCommonRoom = () => moveThrough(STATES.COMMON);
+const exitCommonRoom = () => moveThrough(STATES.SCHOOL);
   const openPortrait = (portrait) => {
     magicAudio.chime(587.33);
     setMemory(portrait);
@@ -489,9 +493,18 @@ export default function App() {
                 <button
                   key={room.id}
                   className={`passage passage-${i} ${room.available ? "passage-open" : "passage-locked"}`}
-                  onClick={() =>
-                    room.available ? enterAcademy() : setDestination(room)
-                  }
+                  onClick={() => {
+  if (!room.available) {
+    setDestination(room);
+    return;
+  }
+
+  if (room.id === "academy") {
+    enterAcademy();
+  } else if (room.id === "common") {
+    enterCommonRoom();
+  }
+}}
                   aria-label={`${room.title}${room.available ? ": entrar" : ": disponível em breve"}`}
                 >
                   <span className="passage-architecture">
@@ -529,7 +542,9 @@ export default function App() {
       {isAcademy && (
         <Academy onBack={exitAcademy} onOpen={openPortrait} visited={visited} />
       )}
-
+{isCommonRoom && (
+  <CommonRoom onBack={exitCommonRoom} />
+)}
       {state !== STATES.LOADING && (
         <footer
           className={`world-footer ${inWorld ? "world-footer-compact" : ""}`}
@@ -556,7 +571,7 @@ export default function App() {
             onClick={showHelp}
             aria-label="Como explorar a jornada"
           >
-            <span>Deixe a curiosidade guiar você</span>
+            <span>Vai la bia curiosidade guiar você</span>
             <Compass size={19} strokeWidth={1} />
           </button>
         </footer>
