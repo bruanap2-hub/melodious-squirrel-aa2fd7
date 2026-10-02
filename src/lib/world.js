@@ -7,6 +7,7 @@ export const STATES = Object.freeze({
   REVELATION: "REVELATION",
   SCHOOL: "SCHOOL",
   ACADEMY: "ACADEMY",
+  COMMON: "COMMON",
 });
 
 export const portraits = [
@@ -81,7 +82,7 @@ export const destinations = [
     id: "common",
     title: "Sala Comunal",
     subtitle: "O aconchego de estar perto",
-    available: false,
+    available: true,
     symbol: "flame",
   },
   {
