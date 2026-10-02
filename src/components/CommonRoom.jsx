@@ -1954,36 +1954,35 @@ export default function CommonRoom({
     };
 
     const handlePointerMove = (
-      event,
-    ) => {
-      if (!dragging) {
-        return;
-      }
+      event,) => {
+  if (!dragging) {
+    return;
+  }
 
-      const dx =
-        event.clientX -
-        lastPointerX;
+  const dx =
+    event.clientX -
+    lastPointerX;
 
-      const dy =
-        event.clientY -
-        lastPointerY;
+  const dy =
+    event.clientY -
+    lastPointerY;
 
-      lastPointerX =
-        event.clientX;
+  lastPointerX =
+    event.clientX;
 
-      lastPointerY =
-        event.clientY;
+  lastPointerY =
+    event.clientY;
 
-      yaw -= dx * 0.0045;
+  yaw += dx * 0.0045;
 
-      pitch -= dy * 0.0038;
+  pitch += dy * 0.0038;
 
-      pitch = clamp(
-        pitch,
-        -0.75,
-        0.45,
-      );
-    };
+  pitch = clamp(
+    pitch,
+    -0.75,
+    0.45,
+  );
+};
 
     const handlePointerUp = (
       event,
