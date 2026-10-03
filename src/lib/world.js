@@ -101,6 +101,66 @@ export const destinations = [
   },
 ];
 
+// Sala Comunal: a inscrição da porta redonda indica a ordem dos vestígios.
+export const commonRoom = {
+  riddle:
+    "Primeiro, acenda o calor. Depois, peça à noite que guarde o caminho. Leia a história que foi escrita e, só então, erga aquilo que abre.",
+  order: ["flame", "moon", "book", "key"],
+  objects: {
+    flame: {
+      title: "A lareira",
+      place: "O CORAÇÃO DA SALA",
+      description:
+        "Brasas baixas dormem sob a pedra. Mesmo quase apagado, o fogo ainda aquece as poltronas ao redor.",
+      action: "Avivar o fogo",
+      awakened: "Primeiro nasceu a luz. O calor se espalha devagar pela sala.",
+    },
+    moon: {
+      title: "A janela redonda",
+      place: "ONDE O JARDIM ENCONTRA A NOITE",
+      description:
+        "Pela janela ao nível da grama, dentes-de-leão balançam sob uma lua tímida, escondida atrás do vidro.",
+      action: "Chamar a lua",
+      awakened: "Depois, a noite guardou o caminho. Um feixe prateado atravessa o tapete.",
+    },
+    book: {
+      title: "O livro da mesa",
+      place: "ENTRE AS POLTRONAS",
+      description:
+        "Um livro de capa gasta repousa ao lado do bule. Alguém deixou uma fita marcando a página favorita.",
+      action: "Abrir o livro",
+      awakened: "Então, a história foi escrita. As páginas brilham como se lembrassem de você.",
+    },
+    key: {
+      title: "A chave de latão",
+      place: "ENTRE AS ESTANTES E AS PLANTAS",
+      description:
+        "Pendurada num gancho, entre samambaias e livros antigos, uma pequena chave espera por mãos gentis.",
+      action: "Erguer a chave",
+      awakened: "Por fim, aquilo que estava fechado pôde ser aberto.",
+    },
+    door: {
+      title: "A porta redonda",
+      place: "A INSCRIÇÃO DA PORTA",
+      description:
+        "Quatro runas de latão rodeiam a porta. Cada uma desperta com um vestígio da sala, na ordem certa.",
+      action: "Atravessar a porta redonda",
+    },
+  },
+  chamber: {
+    title: "A câmara dos que ficam",
+    description:
+      "Além da porta, uma pequena cúpula guarda uma luz que não se apaga. Ela nasce de quem cuida, de quem fica e de quem acolhe.",
+  },
+  letter: {
+    letter: true,
+    eyebrow: "A LUZ QUE NÃO SE APAGA",
+    title: "O que fica",
+    description:
+      "Algumas magias não fazem barulho. Elas acendem o fogo antes que alguém sinta frio, guardam o caminho durante a noite, escrevem histórias com gentileza e abrem portas para quem chega.\n\nBia, esta sala existe por causa de pessoas como você: as que ficam. Que você sempre encontre aqui o mesmo calor que oferece a todos ao seu redor.\n\nCom carinho, de todos nós.",
+  },
+};
+
 export function sceneUrl(name, width = 1920) {
   return `/.netlify/images?url=/img/${name}.png&w=${width}&fm=webp&q=85`;
 }
